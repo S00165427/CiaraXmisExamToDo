@@ -1,9 +1,12 @@
 namespace XmsExamToDo.Migrations.ApplicationUsersMigrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using XmsExamToDo.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<XmsExamToDo.Models.ApplicationDbContext>
     {
@@ -15,18 +18,50 @@ namespace XmsExamToDo.Migrations.ApplicationUsersMigrations
 
         protected override void Seed(XmsExamToDo.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var manager =
+              new UserManager<ApplicationUser>(
+                  new UserStore<ApplicationUser>(context));
+            var roleManager =
+               new RoleManager<IdentityRole>(
+                   new RoleStore<IdentityRole>(context));
+            context.Roles.AddOrUpdate(r => r.Name,
+               new IdentityRole { Name = "Librarian" }
+               );
+            context.Roles.AddOrUpdate(r => r.Name,
+                new IdentityRole { Name = "Member" }
+                );
+            PasswordHasher ps = new PasswordHasher();
+            context.Users.AddOrUpdate(u => u.UserName,
+               new ApplicationUser
+               {
+                   UserName = "einstein.albert@itsligo.ie",
+                   Email = "einstein.albert@itsligo.ie",
+                   EmailConfirmed = true,
+                   SecurityStamp = Guid.NewGuid().ToString(),
+                   PasswordHash = ps.HashPassword("ITSligo$1")
+               });
+            context.Users.AddOrUpdate(u => u.UserName,
+               new ApplicationUser
+               {
+                   UserName = "blogs.joe@itsligo.ie",
+                   Email = "blogs.joe@itsligo.ie",
+                   EmailConfirmed = true,
+                   SecurityStamp = Guid.NewGuid().ToString(),
+                   PasswordHash = ps.HashPassword("ITSligo$2")
+               });
+            context.SaveChanges();
+            //librarian role
+            ApplicationUser Librarian = manager.FindByEmail("einstein.albert@itsligo.ie");
+            if (Librarian != null)
+            {
+                manager.AddToRoles(Librarian.Id, new string[] { "Librarian" });
+            }
+            //member role
+            ApplicationUser Member = manager.FindByEmail("blogs.joe@itsligo.ie");
+            if (Member != null)
+            {
+                manager.AddToRoles(Member.Id, new string[] { "Member" });
+            }
         }
     }
 }
