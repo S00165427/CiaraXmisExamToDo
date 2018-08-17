@@ -174,6 +174,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationUsersMigrations\201808171104174_add application user.cs" />
+    <Compile Include="Migrations\ApplicationUsersMigrations\201808171104174_add application user.Designer.cs">
+      <DependentUpon>201808171104174_add application user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationUsersMigrations\Configuration.cs" />
+    <Compile Include="Migrations\LibraryMigrations\201808171112187_add library migrations.cs" />
+    <Compile Include="Migrations\LibraryMigrations\201808171112187_add library migrations.Designer.cs">
+      <DependentUpon>201808171112187_add library migrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\LibraryMigrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -250,6 +260,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\ApplicationUsersMigrations\201808171104174_add application user.resx">
+      <DependentUpon>201808171104174_add application user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\LibraryMigrations\201808171112187_add library migrations.resx">
+      <DependentUpon>201808171112187_add library migrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
