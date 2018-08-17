@@ -3,7 +3,7 @@ namespace XmsExamToDo.Migrations.LibraryMigrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addlibrarymigrations : DbMigration
+    public partial class addlibrarycontext : DbMigration
     {
         public override void Up()
         {

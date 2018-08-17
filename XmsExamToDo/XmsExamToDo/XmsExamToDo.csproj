@@ -174,14 +174,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationUsersMigrations\201808171104174_add application user.cs" />
-    <Compile Include="Migrations\ApplicationUsersMigrations\201808171104174_add application user.Designer.cs">
-      <DependentUpon>201808171104174_add application user.cs</DependentUpon>
+    <Compile Include="Migrations\ApplicationUsersMigrations\201808171155287_app user.cs" />
+    <Compile Include="Migrations\ApplicationUsersMigrations\201808171155287_app user.Designer.cs">
+      <DependentUpon>201808171155287_app user.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationUsersMigrations\Configuration.cs" />
-    <Compile Include="Migrations\LibraryMigrations\201808171112187_add library migrations.cs" />
-    <Compile Include="Migrations\LibraryMigrations\201808171112187_add library migrations.Designer.cs">
-      <DependentUpon>201808171112187_add library migrations.cs</DependentUpon>
+    <Compile Include="Migrations\LibraryMigrations\201808171157008_add library context.cs" />
+    <Compile Include="Migrations\LibraryMigrations\201808171157008_add library context.Designer.cs">
+      <DependentUpon>201808171157008_add library context.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryMigrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,11 +262,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\ApplicationUsersMigrations\201808171104174_add application user.resx">
-      <DependentUpon>201808171104174_add application user.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ApplicationUsersMigrations\201808171155287_app user.resx">
+      <DependentUpon>201808171155287_app user.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\LibraryMigrations\201808171112187_add library migrations.resx">
-      <DependentUpon>201808171112187_add library migrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\LibraryMigrations\201808171157008_add library context.resx">
+      <DependentUpon>201808171157008_add library context.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
